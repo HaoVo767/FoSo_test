@@ -65,10 +65,10 @@ export default function CircleChart({ chartData }: { chartData: { status: string
   }, [chartData])
 
   return (
-    <div>
+    <div className="w-full">
       <ChartContainer
         config={chartConfig}
-        className="aspect-square max-h-[250px] w-[300px]"
+        className="aspect-square max-h-[250px] w-full"
       >
         <PieChart>
           <ChartTooltip
@@ -117,11 +117,11 @@ export default function CircleChart({ chartData }: { chartData: { status: string
           </Pie>
         </PieChart>
       </ChartContainer>
-      <div className="grid gap-2 grid-cols-2 md:grid-cols-3 mt-10 ">
+      <div className="grid gap-4 lg:gap-2 grid-cols-2 lg:grid-cols-3  relative top-4 lg:left-2 md:top-0 md:mt-10 md:gap-1">
         {inputChartData?.map((item, index) => (
           <div
             key={index}
-            className="w-full p-2 mr-2 rounded-md border border-gray-200 shadow-sm"
+            className="w-full p-4 lg:p-2 rounded-sm border border-gray-200 shadow-sm"
           >
             <div
               className="font-semibold text-2xl"
@@ -129,7 +129,7 @@ export default function CircleChart({ chartData }: { chartData: { status: string
             >
               {!chartData ? 0 : item.quantity}
             </div>
-            <div className="text-sm text-gray-800">{item.status}</div>
+            <div className="text-sm w-max text-gray-800">{item.status}</div>
           </div>
         ))}
       </div>

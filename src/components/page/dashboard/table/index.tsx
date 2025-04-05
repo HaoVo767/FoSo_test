@@ -92,7 +92,7 @@ const Table = () => {
   return (
     <div className="h-[580px] md:[h-500px] border border-gray-100 shadow-md rounded-2xl">
       <div className="block md:flex items-center justify-between mx-4 mt-8">
-        <div className="text-lg w-max">Nguyên vật liệu cần mua</div>
+        <div className="text-sm md:text-md lg:text-lg w-max my-4">Nguyên vật liệu cần mua</div>
         <div>
           <Select
             value={selectValue}
@@ -100,7 +100,7 @@ const Table = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[150px] text-gray-800 border-gray-300 rounded-xl px-4 py-6 "
+              className="w-[150px] text-gray-800 border-gray-300 rounded-xl"
             >
               <SelectValue />
             </SelectTrigger>

@@ -26,15 +26,18 @@ export function HorizontalChart({ chartData }: { chartData: { customer: string; 
         <XAxis
           type="number"
           dataKey="output"
-          label={{ value: "Sản lượng", position: "left", offset: 8 }}
+          label={{ value: "Sản lượng", position: "left", offset: 14 }}
+          tickLine={false}
+          axisLine={false}
+          tickMargin={5}
         />
         <YAxis
           width={130}
           dataKey="customer"
           type="category"
-          tickLine={true}
+          tickLine={false}
           tickMargin={10}
-          axisLine={true}
+          axisLine={false}
           tickSize={4}
           tickFormatter={(value) => value.slice(0, 30)}
         />
@@ -46,7 +49,7 @@ export function HorizontalChart({ chartData }: { chartData: { customer: string; 
           dataKey="output"
           fill="var(--color-output)"
           radius={5}
-          barSize={15}
+          barSize={10}
         />
       </BarChart>
     </ChartContainer>

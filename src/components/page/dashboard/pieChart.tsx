@@ -11,7 +11,6 @@ import {
 import CircleChart from "@/components/chart/circleChart"
 import { chartData3 } from "@/fakeData"
 import CalendarIcon from "@/assets/icons/calendar"
-import CardDashboard from "./cardDashboard"
 
 const PieChart = () => {
   const [selectValue, setSelectValue] = useState("month")
@@ -24,9 +23,9 @@ const PieChart = () => {
     }
   }, [selectValue])
   return (
-    <CardDashboard>
-      <div className="block md:flex justify-between items-center my-1 md:my-4">
-        <div className="text-lg">Tình hình sản xuất</div>
+    <div className="h-[580px] md:[h-500px] border border-gray-100 shadow-md rounded-2xl">
+      <div className="block md:flex justify-between items-center my-1 md:my-4 p-4">
+        <div className="text-sm md:text-md lg:text-lg my-4">Tình hình sản xuất</div>
         <div>
           <Select
             value={selectValue}
@@ -34,7 +33,7 @@ const PieChart = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[160px] text-gray-800 border-gray-300 rounded-xl px-4"
+              className="w-[160px] text-gray-800 border-gray-300 rounded-xl"
             >
               <SelectValue />
             </SelectTrigger>
@@ -49,10 +48,10 @@ const PieChart = () => {
           </Select>
         </div>
       </div>
-      <div className="mr-32 lg:mr-4">
+      <div className="lg:mr-4">
         <CircleChart chartData={fakeChartData} />
       </div>
-    </CardDashboard>
+    </div>
   )
 }
 

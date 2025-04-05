@@ -36,7 +36,7 @@ const ProductChart = () => {
   return (
     <CardDashboard>
       <div className="block md:flex items-center justify-between">
-        <div className="text-xl">Kế hoạch sản xuất</div>
+        <div className="text-sm md:text-md lg:text-lg xl:text-lg my-2">Kế hoạch sản xuất</div>
         <div>
           <Select
             value={selectValue}
@@ -44,7 +44,7 @@ const ProductChart = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[160px] text-gray-800 border-gray-300 rounded-xl px-4 "
+              className="w-[160px] text-gray-800 border-gray-300 rounded-xl"
             >
               <SelectValue />
             </SelectTrigger>

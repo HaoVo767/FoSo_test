@@ -9,25 +9,15 @@ const DashboardPage = () => {
   return (
     <>
       <TopProduct />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 mt-10 mb-4 mx-2">
-        <div>
-          <ProductChart />
-        </div>
-        <div>
-          <CustomerChart />
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 mt-10 gap-y-4 mx-2 my-4">
+        <ProductChart />
+        <CustomerChart />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div>
-          <PieChart />
-        </div>
-        <div>
-          <Progress />
-        </div>
-        <div>
-          <Table />
-        </div>
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <PieChart />
+        <Progress />
+        <Table />
       </div>
     </>
   )

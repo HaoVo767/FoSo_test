@@ -26,8 +26,8 @@ const Progress = () => {
   }, [selectValue])
   return (
     <CardDashboard>
-      <div className="block md:flex justify-between items-center p-4">
-        <div className="text-lg">Tiến độ sản xuất theo nhóm</div>
+      <div className="block md:flex justify-between items-center py-4 px-0">
+        <div className="text-sm md:text-md lg:text-md 2xl:text-lg my-4">Tiến độ sản xuất theo nhóm</div>
         <div>
           <Select
             value={selectValue}
@@ -35,7 +35,7 @@ const Progress = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[160px] text-gray-800 border-gray-300 rounded-xl px-4"
+              className="w-[160px] text-gray-800 border-gray-300 rounded-xl"
             >
               <SelectValue />
             </SelectTrigger>
@@ -49,7 +49,7 @@ const Progress = () => {
           </Select>
         </div>
       </div>
-      <div className="mr-32 md:mr-4">
+      <div className="mr-7 sm:mr-2">
         {fakeProgressData?.map((item, index) => (
           <ProgressBar
             key={index}

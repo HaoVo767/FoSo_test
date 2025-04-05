@@ -22,17 +22,17 @@ const Header = () => {
     "Tiện ích",
   ]
   return (
-    <header className="flex bg-[#003DA0] h-[72px] items-center gap-x-16 justify-between px-8">
+    <header className="flex overflow-x-hidden mx-0 px-4 w-full bg-[#003DA0] h-[72px] items-center justify-between md:pl-8 md:pr-8">
       <div className="flex">
-        <div className="cursor-pointer">
+        <div className="cursor-pointer mr-0 lg:mr-4">
           <Logo />
         </div>
-        <Menu className="sm:block md:hidden ml-4 text-white mt-1 cursor-pointer" />
-        <div className="hidden md:flex items-center">
+        <Menu className="block xl:hidden mx-2 text-white mt-1 cursor-pointer" />
+        <div className="hidden text-sm md:text-md xl:flex items-center">
           {navbar.map((item, index) => (
             <div
               key={index}
-              className="text-white w-max text-[14px] mx-4 cursor-pointer hover:opacity-80"
+              className="text-white w-max text-sm mx-2 cursor-pointer hover:opacity-80"
             >
               {item}
             </div>
@@ -47,11 +47,12 @@ const Header = () => {
         >
           <Input
             icon={<SearchIcon />}
-            placeholder="Tìm kiếm"
+            placeholder={"Tìm kiếm"}
             className="text-white text rounded-xl border-none"
+            style={{ color: "#FFF" }}
           />
         </div>
-        <div className="hidden lg:flex gap-x-4 mt-2">
+        <div className="hidden items-center md:flex md:gap-x-2 mt-2">
           <div className="cursor-pointer hover:opacity-80">
             <GearIcon />
           </div>
@@ -68,7 +69,7 @@ const Header = () => {
             <QuestionIcon />
           </div>
         </div>
-        <div className="flex mt-2 cursor-pointer hover:opacity-80 rounded-full w-6 h-6 ">
+        <div className="flex mt-2 w-5 h-5 cursor-pointer hover:opacity-80 rounded-full lg:w-6 lg:h-6 ">
           <img
             src={avatar}
             alt="avater"
