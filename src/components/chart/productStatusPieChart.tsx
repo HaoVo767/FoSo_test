@@ -135,6 +135,7 @@ export default function ProductStatusPieChart({
             content={<ChartTooltipContent />}
           />
           <Pie
+            //  @ts-expect-error props type any
             activeShape={(props) => renderShape(props)}
             paddingAngle={10}
             cornerRadius={10}
