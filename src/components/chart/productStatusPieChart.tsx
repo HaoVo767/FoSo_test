@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Label, Pie, PieChart } from "recharts"
+import { Label, Pie, PieChart, Sector } from "recharts"
 
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
@@ -22,7 +22,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export default function CircleChart({ chartData }: { chartData: { status: string; quantity: number }[] | undefined }) {
+export default function ProductStatusPieChart({
+  chartData,
+}: {
+  chartData: { status: string; quantity: number }[] | undefined
+}) {
   const [inputChartData, setInputChartData] = React.useState<
     { status?: string; quantity?: number; fill?: string }[] | undefined
   >(() => chartData)
@@ -45,18 +49,73 @@ export default function CircleChart({ chartData }: { chartData: { status: string
     }
   }, [chartData])
 
-  const CustomLabel = ({ ...props }) => {
-    const { x, y, percent } = props
+  interface RenderShapeProps {
+    cx: number
+    cy: number
+    midAngle: number
+    innerRadius: number
+    outerRadius: number
+    startAngle: number
+    endAngle: number
+    fill: string
+    percent: number
+  }
+
+  const renderShape = (props: RenderShapeProps) => {
+    const RADIAN = Math.PI / 180
+    const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, percent } = props
+    const sin = Math.sin(-RADIAN * midAngle)
+    const cos = Math.cos(-RADIAN * midAngle)
+    const sx = cx + outerRadius * cos
+    const sy = cy + outerRadius * sin
+    const mx = cx + (outerRadius + 30) * cos
+    const my = cy + (outerRadius + 30) * sin
+    const ex = mx + (cos >= 0 ? 1 : -1) * 22
+    const ey = my
+    const textAnchor = cos >= 0 ? "start" : "end"
     return (
-      <text
-        x={x}
-        y={y}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        style={{ fontSize: 14, color: "#FFF" }}
-      >
-        {!chartData ? "0%" : `${(percent * 100).toFixed(1)}%`}
-      </text>
+      <g>
+        <Sector
+          cx={cx + 5}
+          cy={cy}
+          innerRadius={innerRadius + 10}
+          outerRadius={outerRadius}
+          startAngle={startAngle}
+          cornerRadius={10}
+          endAngle={endAngle}
+          fill={fill}
+        />
+        {chartData && (
+          <g>
+            <path
+              d={`M${sx + 5},${sy}L${mx},${my}L${ex},${ey}`}
+              stroke={fill}
+              fill="none"
+            />
+            <svg>
+              <rect
+                width="70"
+                height="28"
+                fill={fill}
+                rx={15}
+                x={cos >= 0 ? mx + 8 : mx - 70}
+                y={my - 16}
+              />
+            </svg>
+          </g>
+        )}
+
+        <text
+          x={cos >= 0 ? mx + 23 : mx - 16}
+          y={ey - 15}
+          dy={18}
+          textAnchor={textAnchor}
+          fill="#FFF"
+          style={{ fontSize: 14, color: "#FFF", fontWeight: 500 }}
+        >
+          {` ${(percent * 100).toFixed(1)}%`}
+        </text>
+      </g>
     )
   }
 
@@ -68,7 +127,7 @@ export default function CircleChart({ chartData }: { chartData: { status: string
     <div className="w-full">
       <ChartContainer
         config={chartConfig}
-        className="aspect-square max-h-[250px] w-full"
+        className="h-[200px] lg:h-[268px] w-full"
       >
         <PieChart>
           <ChartTooltip
@@ -76,6 +135,7 @@ export default function CircleChart({ chartData }: { chartData: { status: string
             content={<ChartTooltipContent />}
           />
           <Pie
+            activeShape={(props) => renderShape(props)}
             paddingAngle={10}
             cornerRadius={10}
             data={inputChartData}
@@ -83,7 +143,7 @@ export default function CircleChart({ chartData }: { chartData: { status: string
             nameKey="status"
             innerRadius={60}
             strokeWidth={5}
-            label={(props) => <CustomLabel {...props} />}
+            activeIndex={inputChartData?.map((_, index) => index)}
           >
             <Label
               content={({ viewBox }) => {
@@ -117,11 +177,11 @@ export default function CircleChart({ chartData }: { chartData: { status: string
           </Pie>
         </PieChart>
       </ChartContainer>
-      <div className="grid gap-4 lg:gap-2 grid-cols-2 lg:grid-cols-3  relative top-4 lg:left-2 md:top-0 md:mt-10 md:gap-1">
+      <div className="grid mx-4 gap-1 lg:gap-2 grid-cols-2 2xl:grid-cols-3 mt-4 lg:left-2 md:top-0 md:mt-10 md:gap-1">
         {inputChartData?.map((item, index) => (
           <div
             key={index}
-            className="w-full p-4 lg:p-2 rounded-sm border border-gray-200 shadow-sm"
+            className="w-[150px] lg:w-[176px] p-4 lg:p-2 h-[72px] rounded-sm border border-gray-200"
           >
             <div
               className="font-semibold text-2xl"

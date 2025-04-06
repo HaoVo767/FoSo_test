@@ -27,30 +27,28 @@ const TopProduct = () => {
   }, [selectValue])
   return (
     <div>
-      <div className="flex-row md:flex justify-between my-4 mx-2">
-        <div className="text-sm md:text-md lg:text-lg my-4">Top sản phẩm sản xuất nhiều nhất</div>
-        <div className="mt-1 md:mt-4">
-          <Select
-            value={selectValue}
-            onValueChange={(value) => setSelectValue(value)}
+      <div className="flex-row my-6 md:flex justify-between items-center mx-1">
+        <div className="text-sm md:text-md lg:text-lg font-medium mb-4 lg:mb-0">Top sản phẩm sản xuất nhiều nhất</div>
+        <Select
+          value={selectValue}
+          onValueChange={(value) => setSelectValue(value)}
+        >
+          <SelectTrigger
+            icon={<CalendarIcon />}
+            className="w-[150px] text-gray-800 border-gray-300 rounded-lg"
           >
-            <SelectTrigger
-              icon={<CalendarIcon />}
-              className="w-[160px] text-gray-800 border-gray-300 rounded-xl"
-            >
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="border-gray-300 bg-white">
-              <SelectGroup className="border-gray-300 text-gray-800">
-                <SelectLabel>Thời gian</SelectLabel>
-                <SelectItem value="month">Tháng này</SelectItem>
-                <SelectItem value="noData">No data</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="border-gray-300 bg-white">
+            <SelectGroup className="border-gray-300 text-gray-800">
+              <SelectLabel>Thời gian</SelectLabel>
+              <SelectItem value="month">Tháng này</SelectItem>
+              <SelectItem value="noData">No data</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {fakeCardData?.map((item, index) => (
           <div key={index}>
             <CardCustom

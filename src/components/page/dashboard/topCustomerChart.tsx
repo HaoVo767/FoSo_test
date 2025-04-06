@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { HorizontalChart } from "@/components/chart/horizontalChart"
+import TopCustomerChart from "@/components/chart/topCustommerChart"
 import { chartData2 } from "@/fakeData"
 import CalendarIcon from "@/assets/icons/calendar"
 import CardDashboard from "./cardDashboard"
@@ -26,8 +26,8 @@ const CustomerChart = () => {
   }, [selectValue])
   return (
     <CardDashboard>
-      <div className="block md:flex flex-wrap items-center justify-between">
-        <div className="text-sm md:text-md lg:text-lg my-4">Top 5 Khách hàng có sản lượng nhiều nhất</div>
+      <div className="block md:flex my-4 md:my-1 flex-wrap items-center justify-between">
+        <div className="text-sm md:text-md mb-3 xl:mb-0 lg:text-lg">Top 5 Khách hàng có sản lượng nhiều nhất</div>
         <div>
           <Select
             value={selectValue}
@@ -35,7 +35,7 @@ const CustomerChart = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[150px] text-gray-800 border-gray-300 rounded-xl"
+              className="w-[150px] text-gray-800 border-gray-300 rounded-md"
             >
               <SelectValue />
             </SelectTrigger>
@@ -50,8 +50,8 @@ const CustomerChart = () => {
         </div>
       </div>
       <div>
-        <div className="text-xs relative top-2 left-15 text-gray-600 mt-9">Khách hàng</div>
-        <HorizontalChart chartData={fakeChartData} />
+        <div className="text-xs relative bottom-2 left-10 text-gray-600">Khách hàng</div>
+        <TopCustomerChart chartData={fakeChartData} />
       </div>
     </CardDashboard>
   )

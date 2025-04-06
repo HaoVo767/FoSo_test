@@ -11,9 +11,8 @@ import {
 import ProgressBar from "@/components/progress"
 import CalendarIcon from "@/assets/icons/calendar"
 import { progressData } from "@/fakeData"
-import CardDashboard from "./cardDashboard"
 
-const Progress = () => {
+const ProductionProgress = () => {
   const [selectValue, setSelectValue] = useState("month")
   const [fakeProgressData, setFakeProgressData] = useState(() => (progressData ? progressData : undefined))
   const progressSkeleton = [1, 2, 3, 4, 5, 6, 7]
@@ -25,9 +24,9 @@ const Progress = () => {
     }
   }, [selectValue])
   return (
-    <CardDashboard>
-      <div className="block md:flex justify-between items-center py-4 px-0">
-        <div className="text-sm md:text-md lg:text-md 2xl:text-lg my-4">Tiến độ sản xuất theo nhóm</div>
+    <div className="h-[495px] lg:h-[560px] 2xl:h-[500px] border border-gray-100 shadow-md rounded-2xl px-4">
+      <div className="block my-4 md:flex justify-between items-center px-4">
+        <div className="text-sm md:text-md lg:text-md 2xl:text-lg my-4 md:my-0">Tiến độ sản xuất theo nhóm</div>
         <div>
           <Select
             value={selectValue}
@@ -35,7 +34,7 @@ const Progress = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[160px] text-gray-800 border-gray-300 rounded-xl"
+              className="w-[150px] text-gray-800 border-gray-300 rounded-lg"
             >
               <SelectValue />
             </SelectTrigger>
@@ -61,8 +60,8 @@ const Progress = () => {
         ))}
         {!fakeProgressData && progressSkeleton.map((item) => <ProgressBar key={item} />)}
       </div>
-    </CardDashboard>
+    </div>
   )
 }
 
-export default Progress
+export default ProductionProgress

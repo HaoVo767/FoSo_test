@@ -14,12 +14,16 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export default function Chart({ chartData }: { chartData: { product: string; plan: number; perform: number }[] }) {
+export default function ProductPlanChart({
+  chartData,
+}: {
+  chartData: { product: string; plan: number; perform: number }[]
+}) {
   return (
     <div>
-      <div className="flex gap-x-4 justify-between my-8">
-        <div className="text-gray-600 text-xs relative left-10 top-8">{chartData[0].plan ? "Cái" : "Đơn vị"}</div>
-        <div className="flex gap-x-2">
+      <div className="flex gap-x-4 h-4 justify-between mb-4 mt-0">
+        <div className="text-gray-600 text-xs relative left-9 top-2">{chartData[0].plan ? "Cái" : "Đơn vị"}</div>
+        <div className="flex gap-x-2 ">
           <div className="flex gap-x-2 items-center">
             <div
               className={cn(`w-8 h-4 rounded-4xl`)}
@@ -38,33 +42,43 @@ export default function Chart({ chartData }: { chartData: { product: string; pla
       </div>
       <ChartContainer
         config={chartConfig}
-        className="min-h-[180px] w-full h-[350px] "
+        className="min-h-[150px] w-full h-[308px] "
       >
         <BarChart
           accessibilityLayer
           data={chartData}
+          margin={{
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 10,
+          }}
         >
           <CartesianGrid vertical={false} />
           <XAxis
-            className="gap-x-2"
             width={4}
             dataKey="product"
             tickLine={false}
-            tickMargin={5}
+            tickMargin={6}
             axisLine={false}
-            minTickGap={2}
-            label={{ value: "Mặt hàng", position: "left", offset: 8 }}
+            minTickGap={1}
+            label={{ value: "Mặt hàng", position: "left", offset: 6 }}
             tickFormatter={(value) => value.slice(0, 30)}
           />
           <YAxis
-            height={330}
-            // label={{ value: "Cái", position: "insideLeft", offset: 5 }}
-            // label={{ value: "Cái", position: "insideTop", offset: -10 }}
+            height={300}
             tickLine={false}
-            tickMargin={3}
+            tickMargin={0}
             axisLine={false}
           />
-          <ChartTooltip content={<ChartTooltipContent />} />
+          <ChartTooltip
+            content={
+              <ChartTooltipContent
+                className="w-6 bg-transparent"
+                indicator="line"
+              />
+            }
+          />
           <Bar
             dataKey="plan"
             fill="var(--color-plan)"

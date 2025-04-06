@@ -1,4 +1,4 @@
-import { Bar, BarChart, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
@@ -9,10 +9,10 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function HorizontalChart({ chartData }: { chartData: { customer: string; output: number }[] }) {
+export default function TopCustomerChart({ chartData }: { chartData: { customer: string; output: number }[] }) {
   return (
     <ChartContainer
-      className="min-h-[180px] w-full h-[350px] mt-2 "
+      className="min-h-[180px] w-full h-[280px]"
       config={chartConfig}
     >
       <BarChart
@@ -20,9 +20,10 @@ export function HorizontalChart({ chartData }: { chartData: { customer: string; 
         data={chartData}
         layout="vertical"
         margin={{
-          left: 10,
+          left: -10,
         }}
       >
+        <CartesianGrid horizontal={false} />
         <XAxis
           type="number"
           dataKey="output"
@@ -38,7 +39,6 @@ export function HorizontalChart({ chartData }: { chartData: { customer: string; 
           tickLine={false}
           tickMargin={10}
           axisLine={false}
-          tickSize={4}
           tickFormatter={(value) => value.slice(0, 30)}
         />
         <ChartTooltip
@@ -48,7 +48,7 @@ export function HorizontalChart({ chartData }: { chartData: { customer: string; 
         <Bar
           dataKey="output"
           fill="var(--color-output)"
-          radius={5}
+          radius={[0, 5, 5, 0]}
           barSize={10}
         />
       </BarChart>

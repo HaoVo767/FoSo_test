@@ -90,9 +90,9 @@ const Table = () => {
     }
   }, [selectValue])
   return (
-    <div className="h-[580px] md:[h-500px] border border-gray-100 shadow-md rounded-2xl">
-      <div className="block md:flex items-center justify-between mx-4 mt-8">
-        <div className="text-sm md:text-md lg:text-lg w-max my-4">Nguyên vật liệu cần mua</div>
+    <div className="h-[550px] lg:h-[560px] 2xl:h-[500px] border border-gray-100 shadow-md rounded-2xl">
+      <div className="block my-4 md:flex items-center justify-between mx-4">
+        <div className="text-sm md:text-md lg:text-lg w-max mb-4 md:mb-0">Nguyên vật liệu cần mua</div>
         <div>
           <Select
             value={selectValue}
@@ -100,7 +100,7 @@ const Table = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[150px] text-gray-800 border-gray-300 rounded-xl"
+              className="w-[150px] text-gray-800 border-gray-300 rounded-lg"
             >
               <SelectValue />
             </SelectTrigger>
@@ -115,7 +115,7 @@ const Table = () => {
         </div>
       </div>
 
-      <div className="container w-full mx-auto py-10">
+      <div className="container w-full mx-auto">
         <DataTable
           columns={columns}
           data={fakeTableData}

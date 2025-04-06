@@ -22,7 +22,7 @@ const Header = () => {
     "Tiện ích",
   ]
   return (
-    <header className="flex overflow-x-hidden mx-0 px-4 w-full bg-[#003DA0] h-[72px] items-center justify-between md:pl-8 md:pr-8">
+    <header className="flex overflow-x-hidden mx-0 4 xl:px-12 px-6 w-full bg-[#003DA0] h-[72px] items-center justify-between">
       <div className="flex">
         <div className="cursor-pointer mr-0 lg:mr-4">
           <Logo />
@@ -48,7 +48,7 @@ const Header = () => {
           <Input
             icon={<SearchIcon />}
             placeholder={"Tìm kiếm"}
-            className="text-white text rounded-xl border-none"
+            className="text-white w-[160px] xl:min-w-[200px] text rounded-xl border-none"
             style={{ color: "#FFF" }}
           />
         </div>

@@ -8,11 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import Chart from "@/components/chart/verticalChart"
+import ProductPlanChart from "@/components/chart/productPlanChart"
 import { chartData1 } from "@/fakeData"
 import CalendarIcon from "@/assets/icons/calendar"
 import CardDashboard from "./cardDashboard"
-const ProductChart = () => {
+const ProductManuPlan = () => {
   const [selectValue, setSelectValue] = useState("month")
   const [fakeChartData, setFakeChartData] = useState(() =>
     chartData1
@@ -35,8 +35,8 @@ const ProductChart = () => {
   }, [selectValue])
   return (
     <CardDashboard>
-      <div className="block md:flex items-center justify-between">
-        <div className="text-sm md:text-md lg:text-lg xl:text-lg my-2">Kế hoạch sản xuất</div>
+      <div className="block md:flex my-1 items-center justify-between">
+        <div className="text-sm md:text-md lg:text-lg xl:text-lg mb-4 md:mb-0">Kế hoạch sản xuất</div>
         <div>
           <Select
             value={selectValue}
@@ -44,7 +44,7 @@ const ProductChart = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[160px] text-gray-800 border-gray-300 rounded-xl"
+              className="w-[150px] text-gray-800 border-gray-300 rounded-md"
             >
               <SelectValue />
             </SelectTrigger>
@@ -58,11 +58,9 @@ const ProductChart = () => {
           </Select>
         </div>
       </div>
-      <div className="mt-4">
-        <Chart chartData={fakeChartData} />
-      </div>
+      <ProductPlanChart chartData={fakeChartData} />
     </CardDashboard>
   )
 }
 
-export default ProductChart
+export default ProductManuPlan

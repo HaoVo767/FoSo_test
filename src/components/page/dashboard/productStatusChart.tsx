@@ -8,11 +8,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import CircleChart from "@/components/chart/circleChart"
+import ProductStatusPieChart from "@/components/chart/productStatusPieChart"
 import { chartData3 } from "@/fakeData"
 import CalendarIcon from "@/assets/icons/calendar"
 
-const PieChart = () => {
+const ProductStatusChart = () => {
   const [selectValue, setSelectValue] = useState("month")
   const [fakeChartData, setFakeChartData] = useState(() => (chartData3 ? chartData3 : undefined))
   useEffect(() => {
@@ -23,9 +23,9 @@ const PieChart = () => {
     }
   }, [selectValue])
   return (
-    <div className="h-[580px] md:[h-500px] border border-gray-100 shadow-md rounded-2xl">
-      <div className="block md:flex justify-between items-center my-1 md:my-4 p-4">
-        <div className="text-sm md:text-md lg:text-lg my-4">Tình hình sản xuất</div>
+    <div className="h-[495px] lg:h-[560px] 2xl:h-[500px] border border-gray-100 shadow-md rounded-2xl">
+      <div className="block my-6 md:flex justify-between items-center md:my-4 px-4">
+        <div className="text-sm md:text-md lg:text-lg my-4 md:my-0 ">Tình hình sản xuất</div>
         <div>
           <Select
             value={selectValue}
@@ -33,7 +33,7 @@ const PieChart = () => {
           >
             <SelectTrigger
               icon={<CalendarIcon />}
-              className="w-[160px] text-gray-800 border-gray-300 rounded-xl"
+              className="w-[150px] text-gray-800 border-gray-300 rounded-lg"
             >
               <SelectValue />
             </SelectTrigger>
@@ -48,11 +48,9 @@ const PieChart = () => {
           </Select>
         </div>
       </div>
-      <div className="lg:mr-4">
-        <CircleChart chartData={fakeChartData} />
-      </div>
+      <ProductStatusPieChart chartData={fakeChartData} />
     </div>
   )
 }
 
-export default PieChart
+export default ProductStatusChart
