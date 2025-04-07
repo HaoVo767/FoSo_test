@@ -1,6 +1,7 @@
-import Header from "./components/header"
-import Container from "./components/container"
-import DashboardPage from "./components/page/dashboard"
+import Header from "@/components/header"
+import Container from "@/components/container"
+import DashboardPage from "@/components/page/dashboard"
+import Footer from "@/components/footer"
 const App = () => {
   return (
     <>
@@ -8,6 +9,7 @@ const App = () => {
       <Container>
         <DashboardPage />
       </Container>
+      <Footer />
     </>
   )
 }
